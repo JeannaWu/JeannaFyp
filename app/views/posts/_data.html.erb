@@ -1,0 +1,36 @@
+<div class = "post_data">
+				<p class = "username" >	
+	   			 	<span><%= link_to @post.user.name, @user%>	</span>		
+	   			 	<% if can? :update, @post %>
+						<%= link_to "Edit", edit_post_path(@post)%>
+					<% end %>
+					<% if can? :destroy, @post %>
+						<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
+					<%- end %>
+				</p>
+        		</div>
+        	</br>
+        		<div class = "post_info">
+        			<p class = "buttons">
+          			<span><i class="fa fa-thumbs-o-up"> </i><%= @post.get_likes.size%></span>
+
+          			<span><i class="fa fa-comments-o"></i><%= @post.comments.count%></span>
+          	
+          
+          			<p class = "actions">
+							<span>
+								<%= link_to like_post_path(@post), method: :get, class: "data" do %>
+  								<i class="fa fa-thumbs-o-up"></i>
+								<% end %>
+
+							</span>
+							<span>
+								<%= link_to dislike_post_path(@post), method: :get, class: "data" do %>
+  								<i class="fa fa-thumbs-o-down"></i>
+								<% end %>
+
+							</span>
+				   </p>
+			       
+          	</div>
+        </p>

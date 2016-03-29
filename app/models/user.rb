@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :posts, :dependent => :destroy
   has_many :comments, :through => :posts, :dependent => :destroy
   
+  has_many :approval_votes, dependent: :destroy
+  has_many :agreed_posts, through: :approval_votes, source: :post
+
   acts_as_follower
   acts_as_followable
   

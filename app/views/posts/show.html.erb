@@ -11,52 +11,72 @@
 			<div class = "content">
 				<%= @post.content%>
 			</div>
+			<!--panel user-->
+			 <% if current_user && current_user.paneluser?%>
 			<div class = "data clearfix">
+				<% if @post.approved?%>
+				<%=render "data"%>
+				<% else %>
 				<div class = "post_data">
-				<p class = "username" >	
-	   			 	<span><%= link_to @post.user.name, @user%>	</span>		
-	   			 	<% if can? :update, @post %>
-						<%= link_to "Edit", edit_post_path(@post)%>
-					<% end %>
-					<% if can? :destroy, @post %>
-						<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
-					<%- end %>
-				</p>
+					<p class = "username" >	
+	   			 		<span><%= link_to @post.user.name, @user%>	</span>	
+					</p>
         		</div>
-        	</br>
+        		</br>
         		<div class = "post_info">
-        		<p class = "buttons">
-          		<span><i class="fa fa-thumbs-o-up"> </i><%= @post.get_likes.size%></span>
-
-          		<span><i class="fa fa-comments-o"></i><%= @post.comments.count%></span>
-          	
-          
-          		<p class = "actions">
+        			<p class = "buttons">
+          				<span><i class="fa fa-thumbs-up"> </i><%= @post.approval_votes.count%></span>	
+        			
+        				<p class = "actions">
 							<span>
-								<%= link_to like_post_path(@post), method: :get, class: "data" do %>
-  								<i class="fa fa-thumbs-o-up"></i>
-								<% end %>
-
-							</span>
-							<span>
-								<%= link_to dislike_post_path(@post), method: :get, class: "data" do %>
-  								<i class="fa fa-thumbs-o-down"></i>
-								<% end %>
-
-							</span>
+  						     	<%=link_to"Approve", approve_post_path(@post), method: :patch%>
+					    	</span>
+					    	<span>
+  						      	<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
+					    	</span>
 						</p>
-						<p class = "actions">
-							<% if current_user.paneluser?%>
-							<%= render 'layouts/static_landing_page'%>
-                           <% end %>
-						</p>
-          	</div>
-        </p>
-      </div>
-		</div>
-		<div class = "post_data">
+				</div>	
+				</p>
+				<%end%>
+      		</div>
+      		<!--professional user-->
+      		<% elsif current_user && current_user.profession? %>
+      		<div class = "data clearfix">
+				<% if @post.approved?%>
+				<%=render "data"%>
+				<% else %>
+				<div class = "post_data">
+					<p class = "username" >	
+	   			 		<span><%= link_to @post.user.name, @user%>	</span>	
+					</p>
+        		</div>
+        		</br>
+        		<div class = "post_info">
+        			<p class = "buttons">
+          				<span><i class="fa fa-thumbs-up"> </i><%= @post.approval_votes.count%></span>
+        			
+        			<p class = "actions">
+						<span>
+							<%= link_to agree_post_path(@post), method: :post do %>
+							<i class="fa fa-thumbs-up"></i>
+							<%end%>
+						</span>
+					</p>
+				</div>		
+				<%end%>
 
+      		</div>
+      		<!--common user-->
+      		<%else%>
+      		<div class = "data clearfix">
+				
+				<%=render "data"%>
+				
+
+      		</div>
+      		<%end%>
 		</div>
+		
 		<div id = "random_post">
 			Random Posts
 			<% if @post.approved? %>

@@ -1,32 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
 
-.row{margin-left: 40%;}
-section#button{margin-left: 20%}
-</style>
 </head>
 
 <body>
- <%= simple_form_for(@post,{ class: 'form-horizontal'}) do |f| %>
- <div class="row" align="left">
-	 <div class="field">
-    <%= f.label :category %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	 	<%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" }, input_html: { class: "dropdown-toggle" } %></br>
+ 
+ <%= simple_form_for(@post,html:{ class: 'form-horizontal'}) do |f| %>
+ 
+  <div class="form-group">
+        <%= f.label :category, class: 'col-sm-4 control-label'  %>
+        <div class="col-sm-8">
+            <%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" }, input_html: { class: "dropdown-toggle" } %>
+        </div>
+    </div>
+    
+	 <div class="form-group">
+        <%= f.label :title, class: 'col-sm-4 control-label'  %>
+        <div class="col-sm-8">
+            <%= f.text_field :title, :size => '36x10',placeholder: "Title here" %>
+        </div>
+    </div>
 
-	 	<%= f.label :title %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  		<%= f.text_field :title, :size => '36x10',placeholder: "Title here" %><br><br>
-  		<%= f.label :content %>
-   	 	<%= f.text_area :content, :size => '36x10',placeholder: "Content here" %><br>
-   	 	<%= f.label :image %>
-   	 	<%= f.file_field :image, placeholder: "Image here" %><br>
+    <div class="form-group">
+        <%= f.label :content, class: 'col-sm-4 control-label'  %>
+        <div class="col-sm-8">
+            <%= f.text_area :content, :size => '36x10',placeholder: "Content here" %>
+        </div>
+    </div>
+
+	  <div class="form-group">
+        <%= f.label :image, class: 'col-sm-4 control-label'  %>
+        <div class="col-sm-8">
+              <%= f.file_field :image, placeholder: "Image here" %>
+        </div>
+    </div>
+  		
+   	 
+   	 <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+            <%= f.submit "Post",class: "btn btn-primary"  %>
+        </div>
+    </div>
    	 	
- 	 </div>
-   <section id="button">
-   <%= f.submit "Post",class: "btn btn-primary"  %>
- </section>
-</div>
+ 	
+  
+
 <% end %>
 </body>
 </html>

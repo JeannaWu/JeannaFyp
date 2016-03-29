@@ -87,6 +87,7 @@ end
 end
 
 
+
     def following
           @title = "Following"
           @user  = User.find(params[:id])

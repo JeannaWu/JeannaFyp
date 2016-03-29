@@ -1,5 +1,5 @@
 
 <%= simple_form_for [@post,@post.comments.build] do |f| %>  
-  <p><%= f.text_area :content,:size => '68x10'  %> </p>  
-  <p><%= f.submit "Post Comment" %> </p>  
+  <p><%= f.text_area :content,:size => '46x5'  %> </p>  
+  <p><%= f.submit "Post Comment",class: "btn"%> </p>  
 <% end %>  

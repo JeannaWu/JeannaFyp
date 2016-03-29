@@ -15,88 +15,101 @@
  
  */
 body{
-	font-family: "Proxima Nova";
-	font-weight: 100;
+  font-family: "Proxima Nova";
+  font-weight: 100;
 }
 h1,h2,h3,h4,h5,h6{
-	font-weight: 100;
+  font-weight: 100;
 }
 .wrapper{
-	width: 80%;
-	margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .clearfix:before,  .clearfix:after{
-	content: " ";
-	display: table;
+  content: " ";
+  display: table;
 }
 .clearfix:after{
-	clear: both;
+  clear: both;
+}
+.wrap-1080 {
+
+    width: 1080px;
+    margin: 0 auto;
+    position: relative;
 }
 .button{
-	border: 1px solid #9B9B9B;
-	padding: .7rem 1.25rem;
-	border-radius: .3rem;
-	outline: none;
-	background: white;
-	color: #9B9B9B;
+  border: 1px solid #9B9B9B;
+  padding: .7rem 1.25rem;
+  border-radius: .3rem;
+  outline: none;
+  background: white;
+  color: #9B9B9B;
 }
 header{
-	width: 100%;
-	padding: 2rem 0;
-	
-	border-bottom :1px solid #E4E4E4;
-	#logo {
+
+  width: 100%;
+  padding: 2rem 0;
+  border-bottom :1px solid #E4E4E4;
+  #logo {
       float: left;
-      font-size: 2rem;
-      margin-top: 14px;
-      a{
-      color: #333233;
-      text-decoration: none;
-      &:hover{
-      color: #5DA7C7;
-      }
-      }
+      font-size: 2rem; 
+      position: relative;
+      width: 300px;
       
-    }
-    #searchbtn{
+      a{
+          color: #333233;
+          text-decoration: none;
+          &:hover{
+          color: #5DA7C7;
+          }
+      }
+  }
+  div {
+    display: block;
+}
+  nav {
+      float: right;
+      position: relative;
+      a {
+            margin-left: 1.5rem;
+            line-height: 2;
+            color: #9B9B9B;
+            text-decoration: none;
+            &:hover {
+                color:#5DA7C7;
+            }
+        }
+  }
+  .tab-bar{
+        webkit-backface-visibility: hidden;
+        background: #333333;
+        color: #FFFFFF;
+        height: 2.8125rem;
+        line-height: 2.8125rem;
+        position: relative;
+        
+   }
+
+
     
-	  margin-top: 6px;
-	  margin-left: 30%;
+    #searchbtn{
+      position: relative;
+    
+      form {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        background: transparent;
+        position: relative;
 }
-   
-.nav-default {
-	background: #333333;
-	color: #FFFFFF;
 }
-nav {
-	float: right;
-	margin-bottom: 10px;
-	a {
-		margin-left: 1.5rem;
-		line-height: 2;
-		color: #9B9B9B;
-		text-decoration: none;
-		&:hover{
-			color:#5DA7C7;
-		}
-	}
-	}
-	.tab-bar{
-	webkit-backface-visibility: hidden;
-    background: #333333;
-    color: #FFFFFF;
-    height: 2.8125rem;
-    line-height: 2.8125rem;
-    position: relative;
-    [data-magellan-expedition-clone] {
-    background: #FFFFFF;
-    z-index: 50;
-    min-width: 100%;
-    padding: 10px;
-}
-	}
+
+
 
 }
+
+
 @import 'post.css.scss';
-

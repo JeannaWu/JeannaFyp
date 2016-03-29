@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320201759) do
+ActiveRecord::Schema.define(version: 20160327210036) do
+
+  create_table "approval_votes", force: :cascade do |t|
+    t.integer  "post_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255

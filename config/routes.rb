@@ -11,7 +11,9 @@ end
 end
 
 
-
+get 'auth/:provider/callback', to: 'sessions#create'
+get 'auth/failure', to: redirect('/')
+get 'signout', to: 'sessiona#destroy', as: 'signout'
 
   resources :categories 
    
@@ -21,13 +23,10 @@ end
  	member do
  		get "like", to:"posts#upvote"
  		get "dislike", to:"posts#downvote"
-   
+    post "agree"
+    patch :approve, to:"posts#approve"
  	end
-  member do
-     patch :approve, to:"posts#approve"
-  end
-   match '/posts/:id/approve',  to: 'posts#to_approve'  , via: [:get, :post], as: 'approve_micropost'
-  match '/posts/to_approve',  to: 'posts#approve'  , via: :get
+  
  	resources :comments do
       member do
         get "like", to:"comments#upvote"
@@ -41,6 +40,7 @@ end
   root 'posts#index'
   get 'static_pages/home'
   get 'static_pages/help'
+  get 'posts/examine'
   resources :follows
   
 end

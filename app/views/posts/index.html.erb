@@ -1,3 +1,4 @@
+<% if user_signed_in?%>
 <div id ="post_club">
 
 <div id = "posts">
@@ -20,15 +21,38 @@
       </div>
     </div>
   </div>
-  <% end %> 
- 
- 
+  <% elsif current_user && current_user.profession?
+   %>
+   
+      <div class = "post">
+        <div class = "post_image">
+          <%= link_to (image_tag post.image.url(:small)), post%>
+        </div>
+        <div class = "post_content">
+          <div class = "title">
+          <h2><%= link_to post.title, post%></h2>
+          </div>
+          <div class = "data clearfix">
+            <p class = "username"><i class="fa fa-user"></i><%= post.user.name%></p>
+            <p class = "buttons">
+            
+            </p>
+          </div>
+        </div>
+      </div>
   
+  
+
+ <%end%>
   <%end%>
 </div>
 
-
-<div id ="page">
-<%= will_paginate @posts %>
+ <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+            <%= will_paginate @posts %>
+        </div>
+    </div>
 </div>
-</div>
+<%else%>
+<%= render "home_page"%>
+<%end%>

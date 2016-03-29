@@ -1,9 +1,10 @@
  class PostsController < ApplicationController
  	
-	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :approve]
+	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :approve, :agree]
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :paneluser, only: :approve
 	def index
+		if user_signed_in?
 		@category = Category.all
 		if params[:category].blank?
 			@posts = Post.where(["title LIKE ?","%#{params[:search]}%"]).paginate(page: params[:page], per_page: 30)
@@ -12,7 +13,7 @@
 			@posts = Post.where(category_id: @category_id).paginate(page: params[:page], per_page: 30).order("created_at DESC")
 		end
 		
-
+	end
 	end
 
 	def show
@@ -69,7 +70,13 @@
 		@post.downvote_by current_user
 		redirect_to :back
 	end
-
+	def agree
+		@post = Post.find(params[:id])
+		@post.approval_votes.create
+  		redirect_to :back
+	end
+	
+	
 	private
 	
 	def find_post
