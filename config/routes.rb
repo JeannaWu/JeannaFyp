@@ -26,6 +26,7 @@ end
  		get "like", to:"posts#upvote"
  		get "dislike", to:"posts#downvote"
     post "agree"
+    post "disagree"
     patch :approve, to:"posts#approve"
  	end
   
@@ -33,6 +34,9 @@ end
       member do
         get "like", to:"comments#upvote"
         get "dislike", to:"comments#downvote"
+        post "agree"
+        post "disagree"
+        patch :approve, to:"comments#approve"
   end
   end
  end

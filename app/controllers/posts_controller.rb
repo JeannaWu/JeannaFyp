@@ -37,7 +37,7 @@
 		@post = current_user.posts.build(post_params)
 		
 		if @post.save
-			redirect_to @post
+			flash.now[:success] = 'Thank you for your post, please wait for examination!'
 		else
 			render 'new'
 		end
@@ -71,8 +71,13 @@
 		redirect_to :back
 	end
 	def agree
-		@post = Post.find(params[:id])
+		
 		@post.approval_votes.create
+  		redirect_to :back
+	end
+	def disagree
+		
+		@post.approval_votes.destroy
   		redirect_to :back
 	end
 	

@@ -13,7 +13,7 @@
 	padding: .75rem 5%;
 					color: #969696;
 					
-	.username, .buttons,.actions {
+	.username {
 						margin: 0;
 						font-size: 1rem;
 					}
@@ -26,6 +26,8 @@
 					
 	}
 	.post_info{
+			margin: 0;
+			font-size: .8rem;
 			.buttons {
 						float: left;
 						span {
@@ -128,6 +130,16 @@
 	padding-bottom: 4rem;
 
 	width: 50%;
+
+	.actions{
+		margin: 0;
+		
+		float: right;
+		span {
+			margin-right: .5rem;
+
+		}
+	}
 	
 	.comment_count {
 		border-bottom: 1px solid #E9E9E9;
@@ -162,3 +174,26 @@
 			
 	}
 }
+.comment_info{
+			margin: 0;
+			font-size: .8rem;
+			
+			.buttons {
+						
+						float: left;
+						span {
+							margin-left: .5rem;
+
+						}
+						}
+						.actions{
+						float: right;
+						
+						span {
+							margin-right: .5rem;
+
+						}
+						}
+	}
+				
+			
