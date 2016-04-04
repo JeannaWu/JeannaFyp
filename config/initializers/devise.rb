@@ -22,6 +22,11 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
+  require 'omniauth-facebook'
+  require 'omniauth-twitter'
+  require 'omniauth-tumblr'
+  require 'omniauth-instagram'
+
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -248,6 +253,10 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
+  config.omniauth :facebook, "983447761748095", "51537d3016d16513a7c699eb5db19326", callback_url: "CALLBACK_URL"
+  config.omniauth :twitter, "aIrCRWqvduBCxOk0usnbB5jCU", "kjJteFzQdiUOfaOLdakGgxH0OYURjpC0l6hnK9yp6YOR354Ced", callback_url: "CALLBACK_URL"
+  config.omniauth :tumblr, "tQJeDNqB8e7endSR2anXQ39eQ04fN9lSgyhreHm4f0XTp65EB8", "show", callback_url: "CALLBACK_URL"
+  config.omniauth :instagram, "809a61dbec2d4dde81c9b2bb30e9f23b", "7d20431539fd4b408e78d5ff6ae49b2a", callback_url: "CALLBACK_URL"
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine

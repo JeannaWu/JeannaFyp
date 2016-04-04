@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, :controllers => { :callbacks => "callbacks" }
   resources :users do
     member do
     get :follow
@@ -11,9 +11,11 @@ end
 end
 
 
-get 'auth/:provider/callback', to: 'sessions#create'
-get 'auth/failure', to: redirect('/')
-get 'signout', to: 'sessiona#destroy', as: 'signout'
+#get 'auth/:provider/callback', to: 'sessions#create'
+#get 'auth/failure', to: redirect('/')
+#get 'signout', to: 'sessiona#destroy', as: 'signout'
+ 
+ 
 
   resources :categories 
    

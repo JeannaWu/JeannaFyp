@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327210036) do
+ActiveRecord::Schema.define(version: 20160329200927) do
 
   create_table "approval_votes", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -103,6 +103,10 @@ ActiveRecord::Schema.define(version: 20160327210036) do
     t.string   "career",                 limit: 255
     t.text     "introduction",           limit: 65535
     t.boolean  "paneluser",              limit: 1,     default: false
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "oauth_token",            limit: 255
+    t.datetime "oauth_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -16,55 +16,110 @@
         <![endif]-->
       </head>
       <body>
-        <header >
-           <div class="wrapper clearfix">
-                <div id="logo">
-                    <%= link_to "Tree Hole", root_path %>
+         <% if user_signed_in? %>
+        <header class="header">
+           <div class="wrapper clearfix" >
+            <div class="container">
+              <div class="row">
+                <div class="hidden-xs hidden-sm col-md-3 col-lg-3">
+                 <div class="navbar-header navbar-left">
+                  <a class="navbar-brand-mc">
+                    <%= link_to root_path do%><%= image_tag('tree_hole.png',height: '40')%><%end%>
+                  </a>
+                  </div>
                 </div>
-                <div id="searchbtn">
-                  <form class="form-search">                   
-                  <%= form_tag posts_path, :method => 'get',class: "form-search" do%>
-                  <%= text_field_tag :search, params[:search],class: "span2 search-query"%>                 
-                  <%= submit_tag "" do%> 
-                  <i class="fa fa-search">  </i>
-                  <% end %> 
-                  <%- end %>
-                </form>
+                <div class="hidden-xs visible-sm-block col-sm-2">
+                 <div class="navbar-header navbar-left">
+                  <a class="navbar-brand-mc">
+                    <%= link_to root_path do%><%= image_tag('tree_hole.png',height: '40')%><%end%>
+                  </a>
+                  </div>
                 </div>
-                <div class="header-login" >
-                  <ul class="nav navbar-nav navbar-right">
-                    <% if user_signed_in? %>
+                 <div class="visible-xs-block col-xs-2">
+                 <div class="navbar-header navbar-left">
+                  <a class="navbar-brand-mc">
+                    <%= link_to root_path do%><%= image_tag('tree_hole.png',height: '40')%><%end%>
+                  </a>
+                  </div>
+                </div>
+
+                <div class="col-xs-8 col-sm-5 col-md-5 col-lg-5">
+                    <form class="navbar-form-mc"> 
+                    <div class="input-group input-group-nav">         
+                    <%= form_tag posts_path, :method => 'get',class: "form-search" do%>
+                    <%= text_field_tag :search, params[:search],class: "span2 search-query"%>                 
+                    <%= submit_tag "Search" do%> 
+                      <i class="fa fa-search">  </i>
+                    <% end %> 
+                    <%- end %>
+                  </div>
+                  </form>
+                </div>
+                <div class="hidden-xs col-sm-5 col-md-4 col-lg-4">
+                  <div id="navbar" class="navbar-collapse collapse">
+                       
+                  <ul class="nav navbar-nav pull-right">
+                    
                     <%= link_to current_user.name,current_user, class: "button" %>
                     <%= link_to "Sign out", destroy_user_session_path, :method => :delete ,class: "button"%>
-                    <%= link_to "New Post", new_post_path, class: "button" %>  
-                    <% else %>
-                    <%= link_to "Sign In", new_user_session_path, class: "button" %>
-                    <%= link_to "Sign Up", new_user_registration_path, class: "button" %>
-                    <% end %>
+                    <%= link_to "New Post", new_post_path, class: "button" %>
+                   
                    </ul>
+                 </div>
                 </div>
-       
+                <div class="visible-xs-block col-xs-2">
+                    <div class="nav nav-hamburger pull-right">
+                    
+                        <ul class="dropdown-menu pull-right">
+                           
+                          <%= link_to current_user.name,current_user, class: "button" %>
+                          <%= link_to "Sign out", destroy_user_session_path, :method => :delete ,class: "button"%>
+                          <%= link_to "New Post", new_post_path, class: "button" %>
+                         
+                                
+                        </ul>
+                    </div>
+
+                </div>
+       </div>
+     </div>
       </div>
 
       </header>
-      <nav class="navbar navbar-default">
-        <nav class="container">
-        <nav class = "tab-bar" >
-          <ul class = "nav navbar-nav">
-         <% Category.all.each do |category| %>
-          <li>
-            <%= link_to category.name, posts_path(category: category.name) %>
-          </li>
-        <% end %>
-      </ul>
-      </nav>
-    </nav>
-      </nav>
+      
+      
+          <nav class="main-navigation">
+           
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="nav-toggle-button collapse" data-target="#main-menu">
+                        <span class="sr-only"> Toggle Navigation
+                        <i class="fa fa-bars"></i>
+                        </span>
+                      </div>
+                      <div class="collapse navbar-collapse" id="main-menu">
+                          <ul class = "menu">   
+                          <li class="nav-current" role="presentation">Categories</li> 
+                              <% Category.all.each do |category| %>
+                              <li role="presentation">
+                                  <%= link_to category.name, posts_path(category: category.name) %>
+                              </li>
+                              <% end %>
+                           </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+          </nav>
+      
+      
     </div>
   
   <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-
+<% end %>
 <%= yield %>
       </body>
     </html>

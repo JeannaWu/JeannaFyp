@@ -17,6 +17,12 @@
 body{
   font-family: "Proxima Nova";
   font-weight: 100;
+  line-height: 24px;
+
+}
+html, body{
+  color: #505050;
+  background: #f8f8f8;
 }
 h1,h2,h3,h4,h5,h6{
   font-weight: 100;
@@ -26,6 +32,7 @@ h1,h2,h3,h4,h5,h6{
   margin: 0 auto;
 }
 
+
 .clearfix:before,  .clearfix:after{
   content: " ";
   display: table;
@@ -33,12 +40,7 @@ h1,h2,h3,h4,h5,h6{
 .clearfix:after{
   clear: both;
 }
-.wrap-1080 {
 
-    width: 1080px;
-    margin: 0 auto;
-    position: relative;
-}
 .button{
   border: 1px solid #9B9B9B;
   padding: .7rem 1.25rem;
@@ -48,68 +50,126 @@ h1,h2,h3,h4,h5,h6{
   color: #9B9B9B;
 }
 header{
-
+ 
   width: 100%;
   padding: 2rem 0;
-  border-bottom :1px solid #E4E4E4;
+  background: #ffffff;
+  display: block;
+  #searchbtn {
+      
+      position: relative;
+      
+      .visible-xs-block {
+        display: block !important;
+  }
+
+      form {
+        display: block;
+        margin-top: 0em;
+}
+
+  }
+ 
+    
+   
+  
   #logo {
       float: left;
-      font-size: 2rem; 
+      font-size: 14px;
       position: relative;
-      width: 300px;
+      
+      margin-bottom: 0px;
+      margin-left: 6px;
+      margin-right: 0px;
+      margin-top: 3px;
+      vertical-align: middle;
+      text-align: start;
+      padding: 6px 0;
+   
       
       a{
           color: #333233;
+          cursor: pointer;
           text-decoration: none;
+          line-height: 20px; 
           &:hover{
           color: #5DA7C7;
           }
+          
       }
   }
   div {
     display: block;
 }
-  nav {
-      float: right;
-      position: relative;
-      a {
-            margin-left: 1.5rem;
-            line-height: 2;
-            color: #9B9B9B;
-            text-decoration: none;
-            &:hover {
-                color:#5DA7C7;
-            }
-        }
-  }
-  .tab-bar{
-        webkit-backface-visibility: hidden;
-        background: #333333;
-        color: #FFFFFF;
-        height: 2.8125rem;
-        line-height: 2.8125rem;
-        position: relative;
-        
-   }
-
-
-    
-    #searchbtn{
-      position: relative;
-    
-      form {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        background: transparent;
-        position: relative;
-}
-}
-
-
+ 
+  #bignav{
+  display: none;
+  background-color: rgb(246, 232, 206);
+ }
+ .container-fluid{
+    padding-top: 0px;
+    padding-right: 5%;
+    padding-bottom: 0px;
+    padding-left: 5%;
+    max-width: 1370px;
+    margin-right: auto;
+    margin-left: auto;
+ }
 
 }
 
+.navbar-form-mc .input-group {
+    width: 100%;
+}
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    line-height: 24px;
+
+}
+    .nav-hamburger {
+        height: 40px;
+        padding: 0 10px;
+        color: #fff;
+        border: 1px solid #fff;
+        border-radius: 2px;
+        font-size: 1.125rem;
+        line-height: 40px;
+      }
+    .pull-right {
+        float: right !important;
+    } 
+    .nav {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+.main-navigation{
+  text-align: center;
+  background: #ffffff;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 3px solid #elelel;
+  margin-bottom: 35px;
+}
+.main-navigation .menu{
+  padding: 0;
+  margin: 0;
+}
+.main-navigation .menu li.nav-current{
+  border-bottom: 3px solid #00cc00;
+  margin-bottom: -2px;
+}
+.main-navigation .menu li{
+  list-style: none;
+  display: inline-block;
+  position: relative;
+}
+.main-navigation .menu li a{
+  color: #505050;
+  line-height: 4em;
+  display: block;
+  padding: 0 21px;
+}
 
 @import 'post.css.scss';
