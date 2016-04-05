@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
 	has_many :approval_votes, dependent: :destroy
 	has_many :approval_downvotes, dependent: :destroy
-	has_many :agreed_users, through: :approval_votes, source: :user
+	
 	
 	validates :title, presence: true
 	validates :content, presence: true

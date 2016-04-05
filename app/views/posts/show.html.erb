@@ -114,7 +114,9 @@
 </div>
 <div id = "comments">
 	<div class = "comment_count">
+		
 		<%=  pluralize(@post.comments.count, "Comment")%>
+		
 	</div>
 	<% @comments.each do |comment| %>
 	<!--panel user-->
@@ -128,7 +130,7 @@
 			
 	   </div>
 		<div class = "comment_content">
-		<%= comment.content%>
+		<h style="opacity: 0.5;"><strike><%= comment.content%></strike></h>
 		<% if can? :destroy, @comment %>
 		<%= link_to "Destroy", post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
 		 <% end -%>
@@ -185,7 +187,7 @@
 			
 	   </div>
 		<div class = "comment_content">
-		<%= comment.content%>
+		<h style="opacity: 0.5;"><strike><%= comment.content%></strike></h>
 		<% if can? :destroy, @comment %>
 		<%= link_to "Destroy", post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
 		 <% end -%>
@@ -238,6 +240,7 @@
 	  
 	   <!--common user-->
 	   <%else%>
+	   <% if comment.approved? %>
 	   <div class = "comment">
 		<div class = "data clearfix">
 			<p class = "username">
@@ -273,6 +276,7 @@
 							</span>
 				   </p>
 	   </div>
+	   <% end %>
 	   <%end%>		
 	</div>
 	<% end %> 

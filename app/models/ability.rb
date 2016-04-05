@@ -3,8 +3,9 @@ class Ability
 
   def initialize(user)
 
-    if user.admin?
+    if user && user.admin?
         can :manage, :all
+           
     else
         can :update, Post do |post|
             post.user == user

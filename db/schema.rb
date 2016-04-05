@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404115831) do
+ActiveRecord::Schema.define(version: 20160405182942) do
 
   create_table "approval_downvotes", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -34,11 +34,12 @@ ActiveRecord::Schema.define(version: 20160404115831) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text     "content",    limit: 65535
-    t.integer  "post_id",    limit: 4
-    t.integer  "user_id",    limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "content",     limit: 65535
+    t.integer  "post_id",     limit: 4
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.datetime "approved_at"
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
@@ -119,6 +120,29 @@ ActiveRecord::Schema.define(version: 20160404115831) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "version_associations", force: :cascade do |t|
+    t.integer "version_id",       limit: 4
+    t.string  "foreign_key_name", limit: 255, null: false
+    t.integer "foreign_key_id",   limit: 4
+  end
+
+  add_index "version_associations", ["foreign_key_name", "foreign_key_id"], name: "index_version_associations_on_foreign_key", using: :btree
+  add_index "version_associations", ["version_id"], name: "index_version_associations_on_version_id", using: :btree
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",      limit: 255,        null: false
+    t.integer  "item_id",        limit: 4,          null: false
+    t.string   "event",          limit: 255,        null: false
+    t.string   "whodunnit",      limit: 255
+    t.text     "object",         limit: 4294967295
+    t.datetime "created_at"
+    t.text     "object_changes", limit: 4294967295
+    t.integer  "transaction_id", limit: 4
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "votable_id",   limit: 4

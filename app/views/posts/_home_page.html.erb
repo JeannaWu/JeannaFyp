@@ -1,6 +1,7 @@
+
 <div class="side-nav" role=navigation>
   <ul class="nav-side-nav">
-    <li><a class="tootip-side-nav" href="#onepage"></a></li>
+    <li class="current"><a class="tootip-side-nav" href="#onepage"></a></li>
     <li><a class="tootip-side-nav" href="#twopage"></a></li>
     <li><a class="tootip-side-nav" href="#threepage"></a></li>
     <li><a class="tootip-side-nav" href="#fourpage"></a></li>
@@ -9,6 +10,11 @@
   <div class="onepage-bg" id ="onepagebg"></div>
   <div class="container">
     <div class="row">
+      
+      <ul class="nav nav-pills">
+        <li role="presentation"><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li role="presentation"><%= link_to "Sign In", new_user_session_path %></li>
+      </ul>
       <div class="title-text">
         <div class="col-md-12 headfontsize">
           <h1 class="headh1content">Tree Hole<br>

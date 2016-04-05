@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-  <% elsif current_user && current_user.profession?
+  <% elsif current_user && (current_user.profession? || current_user.paneluser?)
    %>
    
       <div class = "post">
@@ -40,7 +40,6 @@
           </div>
         </div>
       </div>
-  
   
 
  <%end%>

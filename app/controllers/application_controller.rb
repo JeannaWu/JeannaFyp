@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
  require 'will_paginate/array'
  include CanCan::ControllerAdditions
-
+ rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_path, :alert => exception.message
+  end
 	protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?

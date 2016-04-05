@@ -51,20 +51,7 @@ class UsersController < ApplicationController
         
        end
 
-    def update_avatar
-    @user = current_user
-    if params[:user].present?
-      if @user.update_without_password(user_params)
-        flash[:success] = 'Setting avatar successfully'
-        redirect_to settings_path + '#avatar'
-      else
-        flash[:error] = 'Setting avatar unsuccessfully'
-        render :edit
-      end
-    else
-      redirect_to settings_path + '#avatar', :notice => 'Select your avatar'
-    end
-  end
+    
 
   def follow
     @user = User.find(params[:id])

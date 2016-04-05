@@ -17,6 +17,7 @@
       </head>
       <body>
          <% if user_signed_in? %>
+        
         <header class="header">
            <div class="wrapper clearfix" >
             <div class="container">
@@ -42,7 +43,7 @@
                   </a>
                   </div>
                 </div>
-
+                
                 <div class="col-xs-8 col-sm-5 col-md-5 col-lg-5">
                     <form class="navbar-form-mc"> 
                     <div class="input-group input-group-nav">         
@@ -55,14 +56,18 @@
                   </div>
                   </form>
                 </div>
+               
                 <div class="hidden-xs col-sm-5 col-md-4 col-lg-4">
                   <div id="navbar" class="navbar-collapse collapse">
                        
                   <ul class="nav navbar-nav pull-right">
-                    
+                     <% if current_user && current_user.admin?%>
+                    <%= link_to "Manage", rails_admin_path, class: "button" %>
+                    <% end %>
                     <%= link_to current_user.name,current_user, class: "button" %>
                     <%= link_to "Sign out", destroy_user_session_path, :method => :delete ,class: "button"%>
                     <%= link_to "New Post", new_post_path, class: "button" %>
+                    
                    
                    </ul>
                  </div>
@@ -72,9 +77,13 @@
                     
                         <ul class="dropdown-menu pull-right">
                            
+                           <% if current_user && current_user.admin?%>
+                              <%= link_to "Manage", rails_admin_path, class: "button" %>
+                          <% end %>
                           <%= link_to current_user.name,current_user, class: "button" %>
                           <%= link_to "Sign out", destroy_user_session_path, :method => :delete ,class: "button"%>
                           <%= link_to "New Post", new_post_path, class: "button" %>
+                         
                          
                                 
                         </ul>
@@ -87,7 +96,7 @@
 
       </header>
       
-      
+     
           <nav class="main-navigation">
            
                 <div class="container">

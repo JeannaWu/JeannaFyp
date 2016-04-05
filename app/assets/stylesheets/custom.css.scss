@@ -195,6 +195,12 @@ h1,p,a,button{
     background-position: center center;
     background-size: cover;
 }
+.onepage ul.nav.nav-pills{
+  float: right;
+}
+.onepage ul.nav.nav-tabs{
+  float: left;
+}
 #onepagebg{
     background-image: url("onepagebg.jpg");
 }
@@ -292,12 +298,15 @@ h1,p,a,button{
   top: 45%;
   right: 20px;
   z-index: 1;
+  transform: translateY(-50%);
+  -webkit-font-smoothing: antialiased;
 }
 .side-nav ul.nav-side-nav{
   text-align: center;
   list-style: none;
   margin: 0;
   padding-left: 0;
+  
 }
 .side-nav ul.nav-side-nav >li{
   display: block;

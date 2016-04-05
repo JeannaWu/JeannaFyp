@@ -13,6 +13,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.secret_key = '2d62c6bdd588cb9e2b4cae8942e5a60964826276d8e09f2ba712e2582415e28f21ec2628a6d85fc46eb48ca1123289713fbdec2b0e710ea4d5e7468b47f11b13'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -22,6 +23,7 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
+  require 'oauth'
   require 'omniauth-facebook'
   require 'omniauth-twitter'
   require 'omniauth-tumblr'
@@ -253,10 +255,10 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
-  config.omniauth :facebook, "983447761748095", "51537d3016d16513a7c699eb5db19326", callback_url: "CALLBACK_URL"
-  config.omniauth :twitter, "aIrCRWqvduBCxOk0usnbB5jCU", "kjJteFzQdiUOfaOLdakGgxH0OYURjpC0l6hnK9yp6YOR354Ced", callback_url: "CALLBACK_URL"
-  config.omniauth :tumblr, "tQJeDNqB8e7endSR2anXQ39eQ04fN9lSgyhreHm4f0XTp65EB8", "show", callback_url: "CALLBACK_URL"
-  config.omniauth :instagram, "809a61dbec2d4dde81c9b2bb30e9f23b", "7d20431539fd4b408e78d5ff6ae49b2a", callback_url: "CALLBACK_URL"
+  config.omniauth :facebook, "983447761748095", "51537d3016d16513a7c699eb5db19326", callback_url: "CALLBACK_URL",  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
+  config.omniauth :twitter, "aIrCRWqvduBCxOk0usnbB5jCU", "kjJteFzQdiUOfaOLdakGgxH0OYURjpC0l6hnK9yp6YOR354Ced", callback_url: "CALLBACK_URL",  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
+  config.omniauth :tumblr, "tQJeDNqB8e7endSR2anXQ39eQ04fN9lSgyhreHm4f0XTp65EB8", "show", callback_url: "CALLBACK_URL",  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
+  config.omniauth :instagram, "809a61dbec2d4dde81c9b2bb30e9f23b", "7d20431539fd4b408e78d5ff6ae49b2a", callback_url: "CALLBACK_URL",  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine

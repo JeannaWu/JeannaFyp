@@ -27,23 +27,23 @@
 	def new
 		@post = current_user.posts.build
 	end
-	def approve
-		@post = Post.find(params[:id])
-		@post.update_attribute(:approved_at, Time.now)
-		redirect_to root_path
-	end
+	
 	def create
 
 		@post = current_user.posts.build(post_params)
 		
 		if @post.save
-			flash.now[:success] = 'Thank you for your post, please wait for examination!'
+			redirect_to @post
 		else
 			render 'new'
 		end
 	end
 
-
+	def approve
+		@post = Post.find(params[:id])
+		@post.update_attribute(:approved_at, Time.now)
+		redirect_to root_path
+	end
 	def edit
 		
 	end
@@ -61,12 +61,10 @@
 		redirect_to @post
 	end
 	def upvote
-		
 		@post.upvote_by current_user
 		redirect_to :back
 	end
 	def downvote
-		
 		@post.downvote_by current_user
 		redirect_to :back
 	end
