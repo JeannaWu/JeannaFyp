@@ -19,6 +19,7 @@
 	def show
 		@post = Post.find(params[:id])
 		@user = @post.user
+		@image = @post.image
 		@category = @post.category
 		@comments = Comment.where(post_id: @post)
 		@random_post = Post.where.not(id: @post).order("RAND()").first
@@ -68,15 +69,13 @@
 		@post.downvote_by current_user
 		redirect_to :back
 	end
-	def agree
-		
+	def agree	
 		@post.approval_votes.create
   		redirect_to :back
 	end
-	def disagree
-		
-		@post.approval_votes.destroy
-  		redirect_to :back
+	def disagree	
+		@post.approval_downvotes.create
+		redirect_to :back
 	end
 	
 	

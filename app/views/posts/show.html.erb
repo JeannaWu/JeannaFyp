@@ -7,9 +7,11 @@
 	</p>
 	<div class = "clearfix">
 		<div class = "post_image_content">
+			
 			<%= image_tag @post.image.url(:medium) %>
+			
 			<div class = "content">
-				<%= @post.content%>
+				<font size="3"><%= @post.content%></font>
 			</div>
 			<!--panel user-->
 			 <% if current_user && current_user.paneluser?%>

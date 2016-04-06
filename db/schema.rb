@@ -77,17 +77,6 @@ ActiveRecord::Schema.define(version: 20160405182942) do
     t.datetime "approved_at"
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer  "follower_id", limit: 4
-    t.integer  "followed_id", limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.boolean  "admin",                  limit: 1
     t.string   "email",                  limit: 255,   default: "",    null: false
@@ -95,11 +84,6 @@ ActiveRecord::Schema.define(version: 20160405182942) do
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,     default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
     t.string   "name",                   limit: 255
