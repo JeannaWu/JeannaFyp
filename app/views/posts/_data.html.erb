@@ -2,10 +2,14 @@
 				<p class = "username" >	
 	   			 	<span><%= link_to @post.user.name, @user%>	</span>		
 	   			 	<% if can? :update, @post %>
-						<%= link_to "Edit", edit_post_path(@post)%>
+						<%= link_to edit_post_path(@post) do%>
+						<i class="fa fa-pencil-square-o"></i>
+						<% end %>
 					<% end %>
 					<% if can? :destroy, @post %>
-						<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
+						<%= link_to post_path(@post), method: :delete, data: {confirm: "Are you sure to delete the post?"} do %>
+						<i class="fa fa-trash-o"></i>
+						<%end%>
 					<%- end %>
 				</p>
         		</div>

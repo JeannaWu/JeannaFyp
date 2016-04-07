@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-  <% elsif current_user && (current_user.profession? || current_user.paneluser?)
+  <% elsif current_user &&  current_user.paneluser?
    %>
    
       <div class = "post">
@@ -40,18 +40,16 @@
           </div>
         </div>
       </div>
-  
-<div class="form-group">
-        <div class="col-sm-offset-4 col-sm-8">
-            <%= will_paginate @posts %>
-        </div>
-    </div>
-</div>
  <%end%>
   <%end%>
 </div>
 
- 
+ <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+            <%= will_paginate @posts%>
+        </div>
+    </div>
+</div>
 <%else%>
 <%= render "home_page"%>
 <%end%>

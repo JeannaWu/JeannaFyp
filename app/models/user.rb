@@ -2,10 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   include Paperclip::Glue
-  attr_accessor :roles_mask
-  include RoleModel
-  roles_attribute :roles_mask
-  roles :admin, :paneluser, :profession
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
 

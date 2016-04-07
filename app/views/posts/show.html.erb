@@ -32,10 +32,14 @@
         			
         				<p class = "actions">
 							<span>
-  						     	<%=link_to"Approve", approve_post_path(@post), method: :patch%>
+  						     	<%=link_to approve_post_path(@post), method: :patch do%>
+  						     	<i class="fa fa-check"></i>
+  						     	<% end %>
 					    	</span>
 					    	<span>
-  						      	<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
+  						      	<%= link_to post_path(@post), method: :delete, data: {confirm: "Are you sure to delete the post?"} do %>
+  						      	<i class="fa fa-trash-o"></i>
+  						      	<% end %>
 					    	</span>
 						</p>
 				</div>	
@@ -287,4 +291,10 @@
 	<p>Reply to the post<p> 
 	<%= render "comments/form" %>
     </div>
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+            <%= will_paginate @comments%>
+        </div>
+    </div>
+</div>
 </div>

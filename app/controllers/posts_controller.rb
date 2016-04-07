@@ -5,23 +5,22 @@
 	before_action :paneluser, only: :approve
 	def index
 		if user_signed_in?
-		@category = Category.all
-		if params[:category].blank?
-			@posts = Post.where(["title LIKE ?","%#{params[:search]}%"]).paginate(page: params[:page], per_page: 30)
-		else
-			@category_id = Category.find_by(name: params[:category]).id
-			@posts = Post.where(category_id: @category_id).paginate(page: params[:page], per_page: 30).order("created_at DESC")
-		end
+			@category = Category.all
+			if params[:category].blank?
+				@posts = Post.where(["title LIKE ?","%#{params[:search]}%"]).paginate(page: params[:page], per_page: 30)
+			else
+				@category_id = Category.find_by(name: params[:category]).id
+				@posts = Post.where(category_id: @category_id).paginate(page: params[:page], per_page: 30).order("created_at DESC")
+			end
 		
-	end
+		end
 	end
 
 	def show
-		@post = Post.find(params[:id])
 		@user = @post.user
 		@image = @post.image
 		@category = @post.category
-		@comments = Comment.where(post_id: @post)
+		@comments = Comment.where(post_id: @post).paginate(page: params[:page], per_page: 30)
 		@random_post = Post.where.not(id: @post).order("RAND()").first
 	end
 	
