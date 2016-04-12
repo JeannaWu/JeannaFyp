@@ -19,7 +19,7 @@ source 'https://rubygems.org'
     group :production do
       gem 'pg',             '0.17.1'
       gem 'rails_12factor', '0.0.2'
-      
+
       gem 'puma',           '2.11.1' 
     end
 
@@ -45,6 +45,7 @@ source 'https://rubygems.org'
        gem 'oauth2', '~> 1.1'
        gem 'certified', '~> 1.0'
        gem 'twitter'
+       gem 'mysqltopostgres', '~> 0.2.15'
       gem 'instagram'
       gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
      gem 'acts_as_follower', '~> 0.2.1'
