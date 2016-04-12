@@ -45,7 +45,7 @@ source 'https://rubygems.org'
        gem 'certified', '~> 1.0'
        gem 'twitter'
       gem 'instagram'
-      
+      gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
      gem 'acts_as_follower', '~> 0.2.1'
      gem 'acts_as_list', '~> 0.7.2'
      gem 'cancancan', '~> 1.10'

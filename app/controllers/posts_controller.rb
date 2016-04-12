@@ -87,6 +87,7 @@
     	redirect_to(root_path) unless current_user.paneluser?
     end
 	def post_params
-		params.require(:post).permit(:title, :content, :image, :category_id, :type_id)
+		params.require(:post).permit(:title, :content, :image, :category_id)
 	end
+	
 end

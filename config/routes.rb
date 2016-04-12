@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users, :controllers => { :callbacks => "callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :users do
     member do
     get :follow
@@ -14,7 +14,7 @@ end
  
 
   resources :categories 
-   
+
   
 
  resources :posts do

@@ -15,7 +15,7 @@
         		</div>
         	</br>
         		<div class = "post_info">
-        			<p class="category">#<%= link_to @post.category.name, posts_path(category: @category.name)%>#</p>
+        			<p class="category">#<%= link_to @post.category.name, posts_path(category: @category.name) %>#</p>
         			<p class = "buttons">
           			<span><i class="fa fa-thumbs-o-up"> </i><%= @post.get_likes.size%></span>
 

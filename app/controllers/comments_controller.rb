@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
 			render 'new'
 		end
 	end
+	
 	def destroy
 		@comment = @post.comments.find(params[:id]).destroy
 		redirect_to posts_url

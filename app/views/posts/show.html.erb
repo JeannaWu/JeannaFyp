@@ -24,7 +24,7 @@
 	   			 		<span><%= link_to @post.user.name, @user%>	</span>	
 					</p>
         		</div>
-        		</br>
+        		<br>
         		<div class = "post_info">
         			<p class = "buttons">
           				<span><i class="fa fa-thumbs-up"> </i><%= @post.approval_votes.count%></span>	
@@ -54,7 +54,9 @@
 				<% else %>
 				<div class = "post_data">
 					<p class = "username" >	
-	   			 		<span><%= link_to @post.user.name, @user%>	</span>	
+						
+	   			 		<span><%= link_to @post.user.name, @user%></span>
+	   			 	
 					</p>
         		</div>
         		</br>
@@ -118,6 +120,7 @@
 		</div>
 	</div>
 </div>
+
 <div id = "comments">
 	<div class = "comment_count">
 		
@@ -136,9 +139,11 @@
 			
 	   </div>
 		<div class = "comment_content">
-		<h style="opacity: 0.5;"><strike><%= comment.content%></strike></h>
+		<h style="opacity: 0.5;"><strike><font size="3"><%= comment.content%></font></strike></h>
 		<% if can? :destroy, @comment %>
-		<%= link_to "Destroy", post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
+		<%= link_to post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the comment?"} do %>
+		<i class="fa fa-trash-o"></i>
+		<% end %>
 		 <% end -%>
 	   </div>
 	   
@@ -165,18 +170,32 @@
 	   </div>
 	   <% else %>
 	<div class = "comment">
+		
 		<div class = "data clearfix">
 			<p class = "username">
 				<span><%= link_to comment.user.name, @user%></span>		
 				<span><i class="fa fa-thumbs-up"> </i><%= comment.approval_votes.count%></span>
           				<span><i class="fa fa-thumbs-down"> </i><%= comment.approval_downvotes.count%></span>	
 			</p>
+			<div class = "comment_content">
+				<h style="opacity: 0.5;"><strike><%= comment.content%></strike></h>
+					<% if can? :destroy, @comment %>
+						<%= link_to post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the comment?"} do %>
+						<i class="fa fa-trash-o"></i>
+						<% end %>
+		 			<% end -%>
+	  		 </div>
+	  		 <div class="comment_info">
 			<p class = "actions">
 				<span>
-  					<%=link_to"Approve", approve_post_path(@post), method: :patch%>
+  					<%=link_to approve_post_comment_path(comment.post, comment), method: :patch do %>
+  					<i class="fa fa-check"></i>
+  					<% end %>
 				</span>
 				<span>
-  					<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
+  					<%= link_to post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the comment?"} do %>
+						<i class="fa fa-trash-o"></i>
+					<% end %>
 				</span>
 			</p>
 	   </div>
@@ -186,6 +205,7 @@
 	   <% elsif current_user && current_user.profession? %>
 	   <% if comment.approved? %>
 	<div class = "comment">
+		
 		<div class = "data clearfix">
 			<p class = "username">
 				<span><%= link_to comment.user.name, @user%></span>		
@@ -194,11 +214,12 @@
 	   </div>
 		<div class = "comment_content">
 		<h style="opacity: 0.5;"><strike><%= comment.content%></strike></h>
-		<% if can? :destroy, @comment %>
-		<%= link_to "Destroy", post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
-		 <% end -%>
+			<% if can? :destroy, @comment %>
+				<%= link_to post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the comment?"} do %>
+				<i class="fa fa-trash-o"></i>
+				<% end %>
+		 		<% end -%>
 	   </div>
-	   
 	   <div class="comment_info">
 	   		<p class = "buttons">
           			<span><i class="fa fa-thumbs-o-up"> </i><%= comment.get_likes.size%></span>
@@ -222,10 +243,18 @@
 	   </div>
 	   <% else %>
 	   <div class = "comment">
+	   	<div class = "comment_content">
+			<h><font size="3"><%= comment.content%></font></h>
+				<% if can? :destroy, @comment %>
+				<%= link_to post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the comment?"} do %>
+				<i class="fa fa-trash-o"></i>
+				<% end %>
+		 		<% end -%>
+	   	</div>
 		<div class = "data clearfix">
 			<p class = "username">
 				<span><%= link_to comment.user.name, @user%></span>	
-				<span><%= link_to comment.user.name, @user%></span>		
+				
 				<span><i class="fa fa-thumbs-up"> </i><%= comment.approval_votes.count%></span>
           				<span><i class="fa fa-thumbs-down"> </i><%= comment.approval_downvotes.count%></span>		
 			</p>
@@ -248,6 +277,7 @@
 	   <%else%>
 	   <% if comment.approved? %>
 	   <div class = "comment">
+
 		<div class = "data clearfix">
 			<p class = "username">
 				<span><%= link_to comment.user.name, @user%></span>		
@@ -257,8 +287,10 @@
 		<div class = "comment_content">
 		<%= comment.content%>
 		<% if can? :destroy, @comment %>
-		<%= link_to "Destroy", post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the post?"}%>
-		 <% end -%>
+				<%= link_to post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the comment?"} do %>
+				<i class="fa fa-trash-o"></i>
+				<% end %>
+		 		<% end -%>
 	   </div>
 	   
 	   <div class="comment_info">

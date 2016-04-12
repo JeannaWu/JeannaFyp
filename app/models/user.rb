@@ -28,8 +28,7 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name  
-      user.accesstoken = auth.credentials.token
-      user.refreshtoken = auth.credentials.refresh_token
+      
       user.save
     end
   end  
@@ -37,6 +36,13 @@ class User < ActiveRecord::Base
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
+      elsif data = session["devise.twitter_data"] && session["devise.twitter_data"]["extra"]["raw_info"]
+          user.email = data["email"] if user.email.blank?
+        elsif data = session["devise.tumblr_data"] && session["devise.tumblr_data"]["extra"]["raw_info"]
+            user.email = data["email"] if user.email.blank?
+          elsif data = session["devise.instagram_data"] && session["devise.instagram_data"]["extra"]["raw_info"]
+              user.email = data["email"] if user.email.blank?   
+              
       end
     end
   end
