@@ -196,6 +196,8 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     pg (0.17.1)
+    postgresql (1.0.0)
+      pg
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
     rack (1.6.4)
@@ -347,6 +349,7 @@ DEPENDENCIES
   paper_trail (~> 4.1)
   paperclip (~> 4.3, >= 4.3.5)
   pg (= 0.17.1)
+  postgresql (~> 1.0)
   puma (= 2.11.1)
   rails (= 4.2.2)
   rails_12factor (= 0.0.2)
