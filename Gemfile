@@ -19,7 +19,7 @@ source 'https://rubygems.org'
     group :production do
       gem 'pg',             '0.17.1'
       gem 'rails_12factor', '0.0.2'
-      gem 'postgresql', '~> 1.0'
+      
       gem 'puma',           '2.11.1' 
     end
 
@@ -30,7 +30,7 @@ source 'https://rubygems.org'
     gem "will_paginate", ">=3.0.pre4"
     gem 'bootstrap-will_paginate', '0.0.10'
     gem 'time_ago_in_words', '~> 0.1.1'
-    
+    gem 'taps'
     gem 'jquery-rails', '~> 4.1'
     gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
      gem 'paperclip', '~> 4.3', '>= 4.3.5'
