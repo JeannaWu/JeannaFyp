@@ -52,7 +52,7 @@ source 'https://rubygems.org'
      gem 'cancancan', '~> 1.10'
      gem 'paper_trail', '~> 4.1'
      gem 'kaminari', '~> 0.16.3'
-    gem 'rails_admin', '~> 0.8.1'
+    gem 'rails_admin'
      gem 'role_model', '~> 0.8.2'
      gem 'state_machines'
 

@@ -358,7 +358,7 @@ DEPENDENCIES
   puma (= 2.11.1)
   rails (= 4.2.2)
   rails_12factor (= 0.0.2)
-  rails_admin (~> 0.8.1)
+  rails_admin
   role_model (~> 0.8.2)
   sass-rails (= 5.0.2)
   sdoc (= 0.4.0)
