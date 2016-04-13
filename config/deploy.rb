@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'ForumApp'
-set :repo_url, 'git@github.com:JeannaWu/JeannaFyp.git'
+set :repo_url, 'https://github.com/JeannaWu/JeannaFyp.git'
 set :deploy_to, '/home/deploy/ForumApp'
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
