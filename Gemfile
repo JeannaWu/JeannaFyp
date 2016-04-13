@@ -14,6 +14,14 @@ source 'https://rubygems.org'
       gem 'byebug',      '3.4.0'
       gem 'web-console', '2.0.0.beta3'
       gem 'spring',      '1.1.3'
+
+    end
+    group :development do
+      gem 'capistrano', '~> 3.4'
+      gem 'capistrano-bundler', '~> 1.1', '>= 1.1.4'
+      gem 'capistrano-rbenv', github: "capistrano/rbenv"
+      gem 'capistrano-rails', '~> 1.1', '>= 1.1.6'
+
     end
 
     group :production do
@@ -45,6 +53,7 @@ source 'https://rubygems.org'
        gem 'oauth2', '~> 1.1'
        gem 'certified', '~> 1.0'
        gem 'twitter'
+      
       gem 'instagram'
       gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
      gem 'acts_as_follower', '~> 0.2.1'

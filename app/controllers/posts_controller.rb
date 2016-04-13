@@ -21,7 +21,7 @@
 		@image = @post.image
 		@category = @post.category
 		@comments = Comment.where(post_id: @post).paginate(page: params[:page], per_page: 30)
-		@random_post = Post.where.not(id: @post).order("RANDOM()").first
+		@random_post = Post.where.not(id: @post).order("RAND()").first
 	end
 	
 	def new
@@ -58,6 +58,7 @@
 
 	def destroy
 		@post.destroy
+		flash[:success] = "Post deleted"
 		redirect_to @post
 	end
 	def upvote
