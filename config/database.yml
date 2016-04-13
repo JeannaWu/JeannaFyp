@@ -47,8 +47,13 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+#production:
+  #<<: *default
+  #database: ForumApp_production
+  #username: ForumApp
+  #password: <%= ENV['FORUMAPP_DATABASE_PASSWORD'] %>
 production:
-  <<: *default
-  database: ForumApp_production
-  username: ForumApp
-  password: <%= ENV['FORUMAPP_DATABASE_PASSWORD'] %>
+  adapter: mysql2
+  database: ForumApp
+  username: deploy
+  password: wzyzcz158660
