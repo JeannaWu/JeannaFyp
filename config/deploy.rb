@@ -3,10 +3,15 @@ lock '3.4.0'
 
 set :application, 'ForumApp'
 set :repo_url, 'https://github.com/JeannaWu/JeannaFyp.git'
+
+
 set :deploy_to, '/home/deploy/ForumApp'
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
 set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 # Default branch is :master
