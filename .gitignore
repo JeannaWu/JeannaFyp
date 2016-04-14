@@ -22,5 +22,4 @@ set :rvm_ruby_version, '2.0.0-p451'
 /log/*
 !/log/.keep
 /tmp
-config/database.yml
-config/secrets.yml
+

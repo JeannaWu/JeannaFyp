@@ -63,7 +63,7 @@ source 'https://rubygems.org'
      gem 'kaminari', '~> 0.16.3'
     gem 'rails_admin'
      gem 'role_model', '~> 0.8.2'
-     gem 'state_machines'
+     gem 'turbolinks'
 
      
     
