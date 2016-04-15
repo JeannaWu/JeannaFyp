@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 		@user = User.where(:name => params[:name]).first
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(:page => 1, :per_page => 36)
+    
        
 	end
   

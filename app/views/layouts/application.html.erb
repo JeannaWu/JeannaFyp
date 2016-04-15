@@ -67,8 +67,8 @@
                           <% end %>
                         </ul>
                   <ul class="nav navbar-nav navbar-right">
-                    
                     <%= link_to current_user.name,current_user, class: "button" %>
+                    
                     <%= link_to "Sign out", destroy_user_session_path, :method => :delete ,class: "button"%>
                     <%= link_to "New Post", new_post_path, class: "button" %>
                     
@@ -86,7 +86,6 @@
                           <% end %>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">                           
-                           
                           <%= link_to current_user.name,current_user, class: "button" %>
                           <%= link_to "Sign out", destroy_user_session_path, :method => :delete ,class: "button"%>
                           <%= link_to "New Post", new_post_path, class: "button" %>

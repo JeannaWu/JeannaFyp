@@ -185,11 +185,11 @@ h1,p,a,button{
     font-family:  Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans","Microsoft Sans Serif";
 }
 .onepage{
-    height:750px;
+    height:850px;
 
 }
 .onepage-bg{
-    height: 900px;
+    height: 850px;
     width: 100%;
     position: absolute;
     background-position: center center;
@@ -202,6 +202,7 @@ h1,p,a,button{
   float: left;
 }
 #onepagebg{
+height: 950px;
     background-image: url("onepagebg.jpg");
 }
 .headh1content{
@@ -246,7 +247,7 @@ h1,p,a,button{
 }
 
 .threepage{
-    height:750px;
+    height:850px;
 
 }
 .threepage-bg{
@@ -277,7 +278,7 @@ h1,p,a,button{
 
 }
 .fourpage-bg{
-    height: 800px;
+    height: 850px;
     width: 100%;
     position: absolute;
     background-position: center center;

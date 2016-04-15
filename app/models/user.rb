@@ -4,10 +4,12 @@ class User < ActiveRecord::Base
   include Paperclip::Glue
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable,  :omniauthable
 
   has_many :posts, :dependent => :destroy
   has_many :comments, :through => :posts, :dependent => :destroy
+
+  has_many :identities
 
   devise :omniauthable, :omniauth_providers => [:facebook,:twitter,:tumblr,:instagram]
 
@@ -21,31 +23,40 @@ class User < ActiveRecord::Base
   
 
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name  
-      
-      user.save
-    end
-  end  
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
-      elsif data = session["devise.twitter_data"] && session["devise.twitter_data"]["extra"]["raw_info"]
-          user.email = data["email"] if user.email.blank?
-        elsif data = session["devise.tumblr_data"] && session["devise.tumblr_data"]["extra"]["raw_info"]
-            user.email = data["email"] if user.email.blank?
-          elsif data = session["devise.instagram_data"] && session["devise.instagram_data"]["extra"]["raw_info"]
-              user.email = data["email"] if user.email.blank?   
-              
-      end
-    end
+  
+  def twitter
+    identities.where( :provider => "twitter" ).first
   end
+
+  def twitter_client
+    @twitter_client ||= Twitter.client( access_token: twitter.accesstoken )
+  end
+
+  def facebook
+    identities.where( :provider => "facebook" ).first
+  end
+
+  def facebook_client
+    @facebook_client ||= Facebook.client( access_token: facebook.accesstoken )
+  end
+
+  def instagram
+    identities.where( :provider => "instagram" ).first
+  end
+
+  def instagram_client
+    @instagram_client ||= Instagram.client( access_token: instagram.accesstoken )
+  end
+
+  def tumblr
+    identities.where( :provider => "tumblr" ).first
+  end
+
+  def tumblr_client
+    @tumblr_client ||= Tumblr.client( access_token: tumblr.accesstoken )
+  end
+
+
 end
 
 

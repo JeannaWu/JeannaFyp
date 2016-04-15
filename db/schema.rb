@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412090658) do
+ActiveRecord::Schema.define(version: 20160415120912) do
 
   create_table "approval_downvotes", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -57,6 +57,26 @@ ActiveRecord::Schema.define(version: 20160412090658) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "form_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.string   "provider",     limit: 255
+    t.string   "accesstoken",  limit: 255
+    t.string   "uid",          limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "email",        limit: 255
+    t.string   "refreshtoken", limit: 255
+    t.string   "name",         limit: 255
+    t.string   "urls",         limit: 255
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -158,4 +178,5 @@ ActiveRecord::Schema.define(version: 20160412090658) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  add_foreign_key "identities", "users"
 end

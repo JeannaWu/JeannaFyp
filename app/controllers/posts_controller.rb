@@ -1,16 +1,16 @@
  class PostsController < ApplicationController
  	
-	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :approve, :agree]
+	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :approve, :agree, :disagree]
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :paneluser, only: :approve
 	def index
 		if user_signed_in?
 			@category = Category.all
 			if params[:category].blank?
-				@posts = Post.where(["title LIKE ?","%#{params[:search]}%"]).paginate(page: params[:page], per_page: 30)
+				@posts = Post.where(["title LIKE ?","%#{params[:search]}%"]).paginate(page: params[:page], per_page: 30).order("approved_at DESC")
 			else
 				@category_id = Category.find_by(name: params[:category]).id
-				@posts = Post.where(category_id: @category_id).paginate(page: params[:page], per_page: 30).order("created_at DESC")
+				@posts = Post.where(category_id: @category_id).paginate(page: params[:page], per_page: 30).order("approved_at DESC")
 			end
 		
 		end
