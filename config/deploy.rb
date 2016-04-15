@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.4.0'
+lock '3.4.1'
 
 set :application, 'ForumApp'
 set :repo_url, 'https://github.com/JeannaWu/JeannaFyp.git'
@@ -7,7 +7,7 @@ set :repo_url, 'https://github.com/JeannaWu/JeannaFyp.git'
 
 set :deploy_to, '/home/deploy/ForumApp'
 
-
+  set :passenger_restart_with_touch, true
 
 set :linked_files, %w{config/database.yml config/secrets.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}

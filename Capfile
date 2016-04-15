@@ -4,19 +4,15 @@ require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
 
-
-
-
-
 require 'capistrano/bundler'
 require 'capistrano/rails'
 require 'capistrano/passenger'
 
-require 'capistrano/rbenv'
+require 'capistrano/rvm'
 
 
-set :rbenv_type, :user 
-set :rbenv_ruby, '2.2.4-p230'
+set :rvm_type, :user 
+set :rvm_ruby_version, '2.2.1p85'
 
 # Include tasks from other gems included in your Gemfile
 #

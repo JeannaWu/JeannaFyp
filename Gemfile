@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
     gem 'rails',        '4.2.2'
     gem 'sass-rails',   '5.0.2'
-   
+    gem 'mysql2', '~> 0.3.18'
     gem 'bcrypt-ruby', '3.1.2' 
     gem 'uglifier',     '2.5.3'
     gem 'coffee-rails', '4.1.0'
@@ -10,19 +10,18 @@ source 'https://rubygems.org'
     gem 'sdoc',         '0.4.0', group: :doc
 
     group :development, :test do
-      gem 'mysql2', '~> 0.3.18'
+      gem 'sqlite3',     '1.3.9'
       gem 'byebug',      '3.4.0'
       gem 'web-console', '2.0.0.beta3'
       gem 'spring',      '1.1.3'
 
     end
     group :development do
-      gem 'capistrano', '~> 3.4'
+      gem 'capistrano', '~> 3.4', '>= 3.4.1'
       gem 'capistrano-bundler', '~> 1.1', '>= 1.1.4'
-      gem 'capistrano-rbenv', github: "capistrano/rbenv"
+      gem 'capistrano-rvm', '~> 0.1.2'
       gem 'capistrano-passenger', '~> 0.2.0'
       gem 'capistrano-rails', '~> 1.1', '>= 1.1.6'
-
     end
 
     group :production do

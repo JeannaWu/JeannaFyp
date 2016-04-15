@@ -255,10 +255,14 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
-  config.omniauth :facebook, "983447761748095", "51537d3016d16513a7c699eb5db19326", callback_url: "/auth/facebook",  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}},  setup: true, scope: 'user'
-  config.omniauth :twitter, "aIrCRWqvduBCxOk0usnbB5jCU", "kjJteFzQdiUOfaOLdakGgxH0OYURjpC0l6hnK9yp6YOR354Ced", callback_url: "/auth/twitter",  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}, setup: true, scope: 'user'
-  config.omniauth :tumblr, "tQJeDNqB8e7endSR2anXQ39eQ04fN9lSgyhreHm4f0XTp65EB8", "show", callback_url: "/auth/tumblr",  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}, setup: true, scope: 'user'
-  config.omniauth :instagram, "809a61dbec2d4dde81c9b2bb30e9f23b", "7d20431539fd4b408e78d5ff6ae49b2a", callback_url: "/auth/instagram",  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}, setup: true, scope: 'user'
+  config.omniauth :facebook, "983447761748095", "51537d3016d16513a7c699eb5db19326", callback_url: "/auth/facebook",  
+  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}},  setup: true, scope: 'user'
+  config.omniauth :twitter, "aIrCRWqvduBCxOk0usnbB5jCU", "kjJteFzQdiUOfaOLdakGgxH0OYURjpC0l6hnK9yp6YOR354Ced", callback_url: "/auth/twitter",  
+  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}, setup: true, scope: 'user'
+  config.omniauth :tumblr, "tQJeDNqB8e7endSR2anXQ39eQ04fN9lSgyhreHm4f0XTp65EB8", "show", callback_url: "/auth/tumblr",  
+  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}, setup: true, scope: 'user'
+  config.omniauth :instagram, "809a61dbec2d4dde81c9b2bb30e9f23b", "7d20431539fd4b408e78d5ff6ae49b2a", callback_url: "/auth/instagram",  
+  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}, setup: true, scope: 'user'
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
