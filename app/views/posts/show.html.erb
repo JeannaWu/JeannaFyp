@@ -116,7 +116,6 @@
 					</div>
 				</div>
 			</div>
-			
 			<%end%>
 		</div>
 	</div>
@@ -178,9 +177,8 @@
 				<span><i class="fa fa-thumbs-up"> </i><%= comment.approval_votes.count%></span>
           				<span><i class="fa fa-thumbs-down"> </i><%= comment.approval_downvotes.count%></span>	
 			</p>
-		</div>
 			<div class = "comment_content">
-				<font size="3"><%= comment.content%></font>
+				<h ><%= comment.content%></h>
 					<% if can? :destroy, @comment %>
 						<%= link_to post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the comment?"} do %>
 						<i class="fa fa-trash-o"></i>
@@ -246,7 +244,7 @@
 	   <% else %>
 	   <div class = "comment">
 	   	<div class = "comment_content">
-		<font size="3"><%= comment.content%></font>
+			<h><font size="3"><%= comment.content%></font></h>
 				<% if can? :destroy, @comment %>
 				<%= link_to post_comment_path(comment.post,comment), method: :delete, data: {confirm: "Are you sure to delete the comment?"} do %>
 				<i class="fa fa-trash-o"></i>
@@ -322,7 +320,7 @@
 	<% end %> 
 	</br>
 	<div class = "comment_form">
-	<p><a href="#comments">Reply to the post</a></p> 
+	<p>Reply to the post<p> 
 	<%= render "comments/form" %>
     </div>
     <div class="form-group">

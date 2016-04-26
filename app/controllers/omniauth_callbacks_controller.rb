@@ -1,5 +1,5 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
+#Start
     def instagram
         generic_callback( 'instagram' )
     end
@@ -18,7 +18,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     
 
     def generic_callback( provider )
-      @identity = Identity.find_for_oauth env["omniauth.auth", current_user]
+      @identity = Identity.find_for_oauth env["omniauth.auth"]
 
       @user = @identity.user || current_user
       if @user.nil?
@@ -44,4 +44,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     request.env['omniauth.strategy'].options['scope'] = flash[:scope] || request.env['omniauth.strategy'].options['scope']
     render :text => "Setup complete.", :status => 404
   end
+  #End (http://willschenk.com/setting-up-devise-with-twitter-and-facebook-and-other-omniauth-schemes-without-email-addresses/)
 end

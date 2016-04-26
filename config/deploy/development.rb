@@ -5,13 +5,10 @@
 
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
-# server 'db.example.com', user: 'deploy', roles: %w{db}
+ server '139.59.160.58', user: 'deploy', roles: %w{db}
 
-set :stage, :production
+set :branch, 'dev'
 
-# Replace 127.0.0.1 with your server's IP address!
-server '139.59.160.58', user: 'deploy', roles: %w{web app}
-set :branch, 'master'
 
 # role-based syntax
 # ==================

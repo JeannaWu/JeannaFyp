@@ -1,0 +1,33 @@
+
+o ============================================================================
+n:
+ adapter: mysql2
+ database: ForumApp
+ username: root
+ password: wzyzcz
+
+" Netrw Directory Listing                                        (netrw v140)
+"   /usr/local/var/mysql
+"   Sorted by      name
+"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$
+"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:exec
+" ============================================================================
+../
+mysql/
+performance_schema/
+sys/
+auto.cnf
+ca-key.pem
+ca.pem
+client-cert.pem
+client-key.pem
+ib_buffer_pool
+ib_logfile0
+ib_logfile1
+ibdata1
+private_key.pem
+public_key.pem
+server-cert.pem
+server-key.pem
+zhideMacBook-Air.local.err
+.swp
