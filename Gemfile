@@ -52,7 +52,7 @@ source 'https://rubygems.org'
        gem 'oauth2', '~> 1.1'
        gem 'certified', '~> 1.0'
        gem 'twitter'
-      
+      gem 'font-awesome-rails', '~> 4.6', '>= 4.6.1.0'
       gem 'instagram'
       gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
      gem 'acts_as_follower', '~> 0.2.1'

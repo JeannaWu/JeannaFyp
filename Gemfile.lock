@@ -365,6 +365,7 @@ DEPENDENCIES
   coffee-rails (= 4.1.0)
   devise (~> 3.5, >= 3.5.6)
   faker (= 1.4.2)
+  font-awesome-rails (~> 4.6, >= 4.6.1.0)
   instagram
   jbuilder (= 2.2.3)
   jquery-rails (~> 4.1)
