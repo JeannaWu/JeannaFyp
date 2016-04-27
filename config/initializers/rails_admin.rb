@@ -3,7 +3,7 @@ RailsAdmin.config do |config|
     redirect_to main_app.root_path unless current_user.admin == true
   end
 
-  config.assets.initialize_on_precompile = false
+  
   ### Popular gems integration
 
   ## == Devise ==
